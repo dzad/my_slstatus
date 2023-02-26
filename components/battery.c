@@ -46,7 +46,14 @@
 		if (pscanf(path, "%d", &cap_perc) != 1)
 			return NULL;
 
-		return bprintf("%d", cap_perc);
+        if (cap_perc < 100) {
+            return bprintf("[\x03 Bat %d ", cap_perc);
+        }
+        if (cap_perc < 10) {
+            return bprintf("[\x04 Bat %d ", cap_perc);
+        }
+
+		return bprintf("[ Bat %d", cap_perc);
 	}
 
 	const char *
@@ -56,10 +63,10 @@
 			char *state;
 			char *symbol;
 		} map[] = {
-			{ "Charging",    "+" },
-			{ "Discharging", "-" },
-			{ "Full",        "o" },
-			{ "Not charging", "o" },
+			{ "Charging",    "⚡ ]" },
+			{ "Discharging", "🪫 ]" },
+			{ "Full",        "🔋 ]" },
+			{ "Not charging", "🪫 ]" },
 		};
 		size_t i;
 		char path[PATH_MAX], state[12];
@@ -73,7 +80,7 @@
 			if (!strcmp(map[i].state, state))
 				break;
 
-		return (i == LEN(map)) ? "?" : map[i].symbol;
+		return (i == LEN(map)) ? "? ]" : map[i].symbol;
 	}
 
 	const char *
