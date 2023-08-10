@@ -67,10 +67,10 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ keymap, "[ ⌨️ %s ]",    "wlp2s0" },
 	{ netspeed_rx, "[ 📡 %s ]",    "wlp2s0" },
-	{ wifi_essid, "[ 🌐 %s ]",    "wlp2s0" },
+	{ wifi_essid, "[ 🌐 %s  ]",    "wlp2s0" },
 	//{ temp, "temp %s",    "wlp2s0" },
 	{ battery_perc, "%s",    "BAT0" },
 	{ battery_state, "%s",   "BAT0" },
 	{ ram_perc, "[ 💾 %s ]",    NULL},
-	{ datetime, " %s",           "%F %T" },
+	{ datetime, " 📅 %s",           "%F %T" },
 };
